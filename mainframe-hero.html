@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mainframe</title>
+
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium" />
+  <link rel="stylesheet" href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --font-heading: 'HelveticaNowDisplay-Medium', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'HelveticaNowDisplayW01-Rg', 'Helvetica Neue', Arial, sans-serif;
+    }
+    html, body { margin: 0; padding: 0; background: #000; }
+    body { font-family: var(--font-body); }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .cursor { animation: blink 1s step-end infinite; }
+    .pills { opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .pills.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- Background video (scrubbed by mouse) -->
+  <video
+    id="bg-video"
+    class="fixed inset-0 z-0 w-full h-full"
+    style="object-fit: cover; object-position: 70% center;"
+    src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260826_041744_63efcd78-bf7d-4039-99e2-2461e8a61903.mp4"
+    muted
+    playsinline
+    preload="auto"
+  ></video>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-10 flex justify-between items-center px-5 sm:px-8 py-4 sm:py-5 text-white">
+    <div class="flex items-center gap-3">
+      <span class="text-[21px] sm:text-[26px] tracking-tight text-white" style="font-family: var(--font-heading);">Mainframe&reg;</span>
+      <span class="text-[25px] sm:text-[30px] text-white select-none" style="letter-spacing: -0.02em;">&#10035;&#xFE0E;</span>
+    </div>
+
+    <div class="hidden md:flex flex-row text-[23px] text-white">
+      <span><a href="#" class="hover:opacity-60 transition-opacity">Labs</a>, </span>
+      <span><a href="#" class="hover:opacity-60 transition-opacity">Studio</a>, </span>
+      <span><a href="#" class="hover:opacity-60 transition-opacity">Openings</a>, </span>
+      <span><a href="#" class="hover:opacity-60 transition-opacity">Shop</a></span>
+    </div>
+
+    <a href="#" class="hidden md:inline text-[23px] text-white underline underline-offset-2 hover:opacity-60 transition-opacity">Get in touch</a>
+
+    <button id="burger" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Menu">
+      <span id="bar1" class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+      <span id="bar2" class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+      <span id="bar3" class="block w-6 h-[2px] bg-white transition-all duration-300"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div id="overlay"
+       class="md:hidden fixed inset-0 z-[9] bg-black/90 backdrop-blur-md flex flex-col justify-center items-start px-8 gap-8 transition-opacity duration-300 text-white"
+       style="opacity: 0; pointer-events: none;">
+    <a href="#" class="text-[32px] font-medium">Labs</a>
+    <a href="#" class="text-[32px] font-medium">Studio</a>
+    <a href="#" class="text-[32px] font-medium">Openings</a>
+    <a href="#" class="text-[32px] font-medium">Shop</a>
+    <a href="#" class="text-[32px] font-medium underline">Get in touch</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="relative z-[1] h-screen flex flex-col justify-end pb-12 md:justify-center md:pb-0 px-5 sm:px-8 md:px-10 overflow-hidden">
+    <div class="max-w-xl relative z-10">
+
+      <div class="pointer-events-none select-none mb-5 sm:mb-6"
+           style="font-size: clamp(18px, 4vw, 26px); line-height: 1.3; font-weight: 400; color: #fff; filter: blur(4px);">
+        Hey there, meet A.R.I.A,<br />Mainframe's Adaptive Response Interface Agent
+      </div>
+
+      <p class="text-white mb-5 sm:mb-6"
+         style="font-size: clamp(18px, 4vw, 26px); line-height: 1.35; font-weight: 400; min-height: 54px;">
+        <span id="typed"></span><span id="cursor" class="cursor inline-block w-[2px] h-[1.1em] bg-white align-middle ml-[2px]"></span>
+      </p>
+
+      <div id="pills" class="pills flex flex-wrap gap-y-1">
+        <a href="#" class="pill-white inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] hover:bg-black hover:text-white transition-colors duration-200" style="white-space: nowrap;">Pitch us an idea</a>
+        <a href="#" class="pill-white inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] hover:bg-black hover:text-white transition-colors duration-200" style="white-space: nowrap;">Come work here</a>
+        <a href="#" class="pill-white inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] hover:bg-black hover:text-white transition-colors duration-200" style="white-space: nowrap;">Send a brief hello</a>
+        <a href="#" class="pill-white inline-flex items-center justify-center bg-white text-black border border-black/10 rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] hover:bg-black hover:text-white transition-colors duration-200" style="white-space: nowrap;">See how we operate</a>
+
+        <button id="copy-btn" type="button"
+                class="inline-flex items-center justify-center gap-2 sm:gap-3 text-white bg-transparent border border-white rounded-full text-[13px] sm:text-[15px] px-4 sm:px-5 py-[0.3em] mx-[0.2em] mb-[0.4em] hover:bg-white hover:text-black transition-colors duration-200"
+                style="white-space: nowrap;">
+          <span>Reach us: <span class="underline underline-offset-1">hello@mainframe.co</span></span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      /* ---------- Video scrub ---------- */
+      var SENSITIVITY = 0.8;
+      var video = document.getElementById('bg-video');
+      var prevX = null, targetTime = 0, seeking = false;
+
+      function seek() {
+        if (!isFinite(video.duration)) return;
+        seeking = true;
+        video.currentTime = targetTime;
+      }
+      video.addEventListener('seeked', function () {
+        seeking = false;
+        if (Math.abs(video.currentTime - targetTime) > 0.01) seek();
+      });
+      window.addEventListener('mousemove', function (e) {
+        if (!video.duration || !isFinite(video.duration)) { prevX = e.clientX; return; }
+        if (prevX === null) { prevX = e.clientX; return; }
+        var delta = e.clientX - prevX;
+        prevX = e.clientX;
+        targetTime += (delta / window.innerWidth) * SENSITIVITY * video.duration;
+        targetTime = Math.max(0, Math.min(video.duration, targetTime));
+        if (!seeking) seek();
+      });
+
+      /* ---------- Typewriter ---------- */
+      var text = "Glad you stopped in. Good taste tends to find us. Now, what are we building?";
+      var speed = 38, startDelay = 600;
+      var typed = document.getElementById('typed');
+      var cursor = document.getElementById('cursor');
+      var i = 0;
+      setTimeout(function () {
+        var iv = setInterval(function () {
+          i++;
+          typed.textContent = text.slice(0, i);
+          if (i >= text.length) { clearInterval(iv); cursor.style.display = 'none'; }
+        }, speed);
+      }, startDelay);
+
+      /* ---------- Pills fade-in (400ms after load) ---------- */
+      setTimeout(function () { document.getElementById('pills').classList.add('show'); }, 400);
+
+      /* ---------- Copy email ---------- */
+      document.getElementById('copy-btn').addEventListener('click', function () {
+        if (navigator.clipboard) navigator.clipboard.writeText('hello@mainframe.co');
+      });
+
+      /* ---------- Mobile menu ---------- */
+      var open = false;
+      var overlay = document.getElementById('overlay');
+      var b1 = document.getElementById('bar1'), b2 = document.getElementById('bar2'), b3 = document.getElementById('bar3');
+      document.getElementById('burger').addEventListener('click', function () {
+        open = !open;
+        overlay.style.opacity = open ? '1' : '0';
+        overlay.style.pointerEvents = open ? 'auto' : 'none';
+        b1.style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+        b2.style.opacity = open ? '0' : '1';
+        b3.style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
+      });
+    })();
+  </script>
+</body>
+</html>
